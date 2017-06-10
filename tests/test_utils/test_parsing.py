@@ -8,7 +8,7 @@ from nose.tools import \
     assert_true, \
     raises
 
-from die_stats.utils.parsing import \
+from throw.utils.parsing import \
     FixConverter, \
     OpInfo, \
     OpToken, \

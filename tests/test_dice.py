@@ -10,7 +10,7 @@ from nose.tools import \
     assert_true, \
     raises
 
-from die_stats.dice import Throw
+from throw.dice import Throw
 
 
 class TestThrow:

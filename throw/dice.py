@@ -6,7 +6,7 @@ from math import isclose
 import operator
 from random import randint
 
-from die_stats.utils.parsing import FixConverter, Tokenizer
+from throw.utils.parsing import FixConverter, Tokenizer
 
 
 class Throw:
