@@ -71,6 +71,14 @@ class FixConverter:
     """
 
     def convert_in_postfix(self, token_list):
+        """Convert a list of tokens in infix order to postfix order
+
+        Args:
+            token_list: list of Tokens or OpTokens in infix order
+
+        Returns:
+            (list) the token_list in postfix order
+        """
         stack = []
         out = []
 
@@ -92,6 +100,14 @@ class FixConverter:
         return out
 
     def convert_in_prefix(self, token_list):
+        """Convert a list of tokens in infix order to prefix order
+
+        Args:
+            token_list: list of Tokens or OpTokens in infix order
+
+        Returns:
+            (list) the token_list in prefix order
+        """
         stack = []
         out = []
 

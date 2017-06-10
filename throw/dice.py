@@ -37,9 +37,9 @@ class Throw:
 class RollParser:
 
     def parse(self, expression):
-        """Parse a roll's arithmetic string
+        """Parse a roll expression
 
-        An arithmetic string combines any number of simple operations with
+        A roll expression combines any number of simple operations with
         constants and "rolls" of dice.  A roll is of the form ndx, where n and
         x are natural numbers.
 
@@ -48,7 +48,10 @@ class RollParser:
 
         Returns:
             (list, function) the list of tokens and a function that can be
-                invoked to generate a result from the arithmetic string
+                invoked to generate a result from the expression
+
+        Raises:
+            ValueError
         """
         token_list = list(Tokenizer(expression))
 
@@ -60,14 +63,27 @@ class RollParser:
 
         postfix_token_list = FixConverter().convert_in_postfix(token_list)
 
-        def roll_function(): return self.evaluate(postfix_token_list, expression)
+        def roll_function(): return self._evaluate(postfix_token_list, expression)
 
         # Call roll_function once just to see if we can actually evaluate the expression
         roll_function()
 
         return token_list, roll_function
 
-    def evaluate(self, token_list, expression):
+    def _evaluate(self, token_list, expression):
+        """Evaluate a token_list that is in postfix order
+
+        Args:
+            token_list: list of Tokens and OpTokens in postfix order
+            expression: the expression that generated the token list, used for
+                error messages
+
+        Returns:
+            (int/float) result of the expression, returning an int if possible
+
+        Raises:
+            ValueError
+        """
         ops = {
             '+': operator.add,
             '-': operator.sub,
