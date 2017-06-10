@@ -5,12 +5,10 @@
 from nose.tools import \
     assert_list_equal, \
     assert_equal, \
-    assert_true, \
-    raises
+    assert_true
 
 from throw.utils.parsing import \
     FixConverter, \
-    OpInfo, \
     OpToken, \
     Token, \
     Tokenizer
