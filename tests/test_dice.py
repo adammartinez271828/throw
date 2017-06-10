@@ -52,7 +52,7 @@ class TestThrow:
         return_value = throw.roll()
         assert_true(min_value <= return_value <= max_value)
 
-    @raises(RuntimeError)
+    @raises(ValueError)
     def test_bad_characters(self):
         Throw('@ + 3 + 3')
 

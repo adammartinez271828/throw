@@ -55,7 +55,7 @@ class Tokenizer:
             if ttype == 'SKIP':
                 pass
             elif ttype == 'MISMATCH':
-                raise RuntimeError(f'{value!r} unexpected')
+                raise ValueError(f'Unrecognized symbol: {value}')
             else:
                 if self.add_opinfo and ttype == 'BINOP':
                     yield OpToken(ttype, value, *OPINFO_MAP[value])
