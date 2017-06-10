@@ -93,7 +93,7 @@ class RollParser:
                     )
                 )
 
-        if len(stack) > 1:
+        if len(stack) != 1:
             raise ValueError(f'Invalid expression: "{expression}"')
 
         result = stack[0]

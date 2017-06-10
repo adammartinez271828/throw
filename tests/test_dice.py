@@ -63,3 +63,7 @@ class TestThrow:
     @raises(ValueError)
     def test_only_ops(self):
         Throw('+ + +')
+
+    @raises(ValueError)
+    def test_empty(self):
+        Throw('')
