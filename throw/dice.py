@@ -63,7 +63,8 @@ class RollParser:
 
         postfix_token_list = FixConverter().convert_in_postfix(token_list)
 
-        def roll_function(): return self._evaluate(postfix_token_list, expression)
+        def roll_function():
+            return self._evaluate(postfix_token_list, expression)
 
         # Call roll_function once just to see if we can actually evaluate the expression
         roll_function()

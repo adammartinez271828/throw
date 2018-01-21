@@ -13,11 +13,11 @@ OpInfo = namedtuple('OpInfo', ['precedence', 'associativity'])
 
 # Assign precedence and associativity to each operator for OpTokens
 OPINFO_MAP = {
-    '+':    OpInfo(10, 'LEFT'),
-    '-':    OpInfo(10, 'LEFT'),
-    '*':    OpInfo(20, 'LEFT'),
-    '/':    OpInfo(20, 'LEFT'),
-    '^':    OpInfo(30, 'RIGHT'),
+    '+': OpInfo(10, 'LEFT'),
+    '-': OpInfo(10, 'LEFT'),
+    '*': OpInfo(20, 'LEFT'),
+    '/': OpInfo(20, 'LEFT'),
+    '^': OpInfo(30, 'RIGHT'),
 }
 
 
@@ -26,13 +26,13 @@ class Tokenizer:
     """
     # Define tokens
     token_specification = (
-        ('DIE',       r'\d+d-?\d+'),   # Die
-        ('MODIFIER',  r'\d+'),       # Modifier
-        ('BINOP',     r'[+\-*/^]'),  # Arithmetic operators
-        ('LPAREN',    r'[\(]'),      # Parentheses
-        ('RPAREN',    r'[\)]'),      # Parentheses
-        ('SKIP',      r'[ \t]+'),    # Skip over spaces and tabs
-        ('MISMATCH',  r'.'),         # Any other character
+        ('DIE', r'\d+d-?\d+'),   # Die
+        ('MODIFIER', r'\d+'),       # Modifier
+        ('BINOP', r'[+\-*/^]'),  # Arithmetic operators
+        ('LPAREN', r'[\(]'),      # Parentheses
+        ('RPAREN', r'[\)]'),      # Parentheses
+        ('SKIP', r'[ \t]+'),    # Skip over spaces and tabs
+        ('MISMATCH', r'.'),         # Any other character
     )
 
     # Build the regex string -- essentially concatenate a bunch of regex
@@ -87,7 +87,8 @@ class FixConverter:
                 stack.append(token)
             elif token.type == 'BINOP':
                 precedence = OPINFO_MAP[token.value].precedence
-                while self.peek_token(stack).type == 'BINOP' and OPINFO_MAP[self.peek_token(stack).value].precedence >= precedence:
+                while (self.peek_token(stack).type == 'BINOP' and
+                       OPINFO_MAP[self.peek_token(stack).value].precedence >= precedence):
                     out.append(stack.pop())
                 stack.append(token)
             elif token.type == 'RPAREN':
@@ -116,7 +117,8 @@ class FixConverter:
                 stack.append(token)
             elif token.type == 'BINOP':
                 precedence = OPINFO_MAP[token.value].precedence
-                while self.peek_token(stack).type == 'BINOP' and OPINFO_MAP[self.peek_token(stack).value].precedence >= precedence:
+                while (self.peek_token(stack).type == 'BINOP' and
+                       OPINFO_MAP[self.peek_token(stack).value].precedence >= precedence):
                     out.append(stack.pop())
                 stack.append(token)
             elif token.type == 'LPAREN':

@@ -41,10 +41,12 @@ setup(
         ]
     ),  # Required
     # install_requires=[],  # Optional
-    extras_require={  # Optional
+    # setup_requires=['pytest-runner'],  # Optional
+    # tests_require=['pytest'],  # Optional
+    # extras_require={  # Optional
         # 'dev': ['check-manifest'],
-        'test': ['nose', 'tox'],
-    },
+        # 'test': ['coverage', 'nose', 'tox'],
+    # },
     # package_data={  # Optional
     #     'sample': ['package_data.dat'],
     # },
