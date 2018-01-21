@@ -1,3 +1,0 @@
-# Die Roll Probability Calculator
-
-Work in progress...
