@@ -7,3 +7,5 @@ Die Roll Probability Calculator
   :target: https://coveralls.io/github/adammartinez271828/throw?branch=master
 
 Work in progress...
+
+Editing this file so we can commit and trigger travis.
