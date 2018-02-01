@@ -19,6 +19,8 @@ class TestThrow:
             throw = Throw(f'1d{n}')
             return_value = throw.roll()
             assert_true(1 <= return_value <= n)
+            
+        assert False
 
     def test_throw_addition(self):
         throw = Throw('1d1 + 1')
